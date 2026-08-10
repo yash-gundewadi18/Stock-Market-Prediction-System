@@ -1,0 +1,211 @@
+/* NIFTY 50 Live Market Dashboard - Dark Theme CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Main dark workspace background styling */
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"], .main {
+    background-color: #0E1117 !important;
+    color: #E0E3EB !important;
+}
+
+/* Hide default Streamlit main menu and footer */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Custom Header Styling */
+.header-container {
+    background: linear-gradient(135deg, #1E222D 0%, #131722 100%);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid #2A2E39;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #2962FF, #00E5FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.header-subtitle {
+    font-size: 0.9rem;
+    color: #787B86;
+    margin-top: 4px;
+}
+
+/* Status Badges */
+.badge-open {
+    background-color: rgba(8, 153, 129, 0.15);
+    color: #089981;
+    border: 1px solid #089981;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-closed {
+    background-color: rgba(242, 54, 69, 0.15);
+    color: #F23645;
+    border: 1px solid #F23645;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-green {
+    background-color: #00E676;
+    box-shadow: 0 0 8px #00E676;
+}
+
+.dot-red {
+    background-color: #FF5252;
+    box-shadow: 0 0 8px #FF5252;
+}
+
+/* Card Metrics Grid */
+.kpi-card {
+    background-color: #1E222D;
+    border: 1px solid #2A2E39;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    height: 100%;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: #2962FF;
+}
+
+.kpi-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #787B86;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.kpi-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #F0F3FA;
+}
+
+.kpi-delta-pos {
+    color: #089981;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.kpi-delta-neg {
+    color: #F23645;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Gainers and Losers Cards */
+.stock-card {
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.gainer-card {
+    background: rgba(8, 153, 129, 0.08);
+    border: 1px solid rgba(8, 153, 129, 0.3);
+}
+
+.gainer-card:hover {
+    background: rgba(8, 153, 129, 0.16);
+    border-color: #089981;
+}
+
+.loser-card {
+    background: rgba(242, 54, 69, 0.08);
+    border: 1px solid rgba(242, 54, 69, 0.3);
+}
+
+.loser-card:hover {
+    background: rgba(242, 54, 69, 0.16);
+    border-color: #F23645;
+}
+
+.stock-symbol {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.stock-ltp {
+    font-size: 0.9rem;
+    color: #B2B5BE;
+}
+
+.pct-pill-green {
+    background-color: #089981;
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.pct-pill-red {
+    background-color: #F23645;
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* Sidebar Dark Theme Adjustments */
+[data-testid="stSidebar"] {
+    background-color: #131722 !important;
+    border-right: 1px solid #2A2E39 !important;
+}
+
+/* Custom Footer */
+.custom-footer {
+    border-top: 1px solid #2A2E39;
+    padding: 1.5rem 0;
+    margin-top: 2.5rem;
+    color: #787B86;
+    font-size: 0.85rem;
+    text-align: center;
+}

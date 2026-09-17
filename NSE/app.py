@@ -2,13 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-from datetime import datetime
+from datetime import datetime, time
+from zoneinfo import ZoneInfo
 
 # Import custom helper modules
 from utils import (
     load_nifty_data,
     get_latest_snapshot,
-    get_market_status,
     compute_kpis,
     compute_technical_indicators
 )
@@ -26,6 +26,24 @@ from charts import (
     plot_market_heatmap
 )
 
+IST = ZoneInfo("Asia/Kolkata")
+
+MARKET_OPEN = time(9, 15)
+MARKET_CLOSE = time(15, 30)
+
+
+def get_ist_now():
+    return datetime.now(IST)
+
+
+def is_market_open():
+    now = get_ist_now()
+
+    # Saturday = 5, Sunday = 6
+    if now.weekday() >= 5:
+        return False
+
+    return MARKET_OPEN <= now.time() <= MARKET_CLOSE
 # Set Streamlit page configuration
 st.set_page_config(
     page_title="NIFTY 50 Live Market Dashboard",
@@ -105,9 +123,9 @@ filtered_snapshot = filtered_snapshot[
 # HEADER SECTION (Requirement 1)
 # ---------------------------------------------------------
 kpi_data = compute_kpis(df)
-market_status_text, is_open = get_market_status()
-current_time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
+is_open = is_market_open()
+market_status_text = "Market Open" if is_open else "Market Closed"
+current_time_str = get_ist_now().strftime("%Y-%m-%d %H:%M:%S")
 status_badge = f"""
 <div class="{ 'badge-open' if is_open else 'badge-closed' }">
     <span class="status-dot { 'dot-green' if is_open else 'dot-red' }"></span>

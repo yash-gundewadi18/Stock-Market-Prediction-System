@@ -18,19 +18,18 @@ def run_both():
 
     time.sleep(2)
 
-    print("2️⃣ Starting Streamlit Dashboard (app.py)...")
+    print("2️⃣ Starting FastAPI Backend (api.py)...")
 
-    port = os.environ.get("PORT", "10000")
+    port = os.environ.get("PORT", "8000")
 
     p2 = subprocess.Popen([
         sys.executable,
         "-m",
-        "streamlit",
-        "run",
-        "app.py",
-        "--server.address",
+        "uvicorn",
+        "api:app",
+        "--host",
         "0.0.0.0",
-        "--server.port",
+        "--port",
         port
     ])
 
